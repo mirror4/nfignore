@@ -58,7 +58,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalLibraryDirectories="&quot;C:\Program Files\Microsoft Research\Detours Express 2.1\lib&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files\boost\boost_1_35_0\lib&quot;"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -128,7 +128,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalLibraryDirectories="&quot;C:\Program Files\Microsoft Research\Detours Express 2.1\lib&quot;;&quot;C:\Program Files\boost\boost_1_35_0\lib&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files\boost\boost_1_35_0\lib&quot;;&quot;C:\Program Files\Microsoft Research\Detours Express 2.1\lib&quot;"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
