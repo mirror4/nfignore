@@ -163,7 +163,6 @@ void reload(string file)
 {
 	
 	FreeDll(nf, hHandle);
-	hHandle = InjectDll(nf, "hook.dll");
 	clear();
 
 	printFile("ignore_users.txt", "Ignoring:");
