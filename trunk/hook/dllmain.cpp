@@ -29,11 +29,14 @@ bool matches(string text, T c)
 {
 	for (T::const_iterator i=c.begin(); i!=c.end(); ++i)
 	{
-		boost::regex e(*i);
-		if (boost::regex_match(text, e))
+		try
 		{
-			return true;
-		}
+			boost::regex e(*i);
+			if (boost::regex_match(text, e))
+			{
+				return true;
+			}
+		} catch (...) {}
 	}
 	return false;
 }
