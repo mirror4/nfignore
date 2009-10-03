@@ -229,47 +229,37 @@ bool WatchFiles(string dir, F callback)
 	return true;
 }
 
+
+
+
 int main(int agrc, char** argv)
 {
-	clear();
-
-//get the handle for navyfield with full access rights
-	nf = GetProcessHandle("NavyFIELD");
-	if (!nf)
+	while (true)
 	{
-		cout << "Waiting for NavyFIELD to start..." << endl;
-		while (!nf) { nf =  GetProcessHandle("NavyFIELD"); }
-	}
-	
-	dHandle = InjectDll(nf, "detoured.dll");
-	hHandle = InjectDll(nf, "hook.dll");
-	atexit(onExit);
+		clear();
 
-
-	printFile("ignore_users.txt", "Ignoring:");
-	printFile("ignore_phrases.txt", "---");
-
-
-//this gives notifications when our files change.
-//  we can then reload the ignore lists
-	thread t (bind(&WatchFiles<reload_t>, GetCWD(), &reload));
-
-	while(true)
-	{
-		char in;
-		cin >> in;
-
-		switch(in)
+	//get the handle for navyfield with full access rights
+		nf = GetProcessHandle("NavyFIELD");
+		if (!nf)
 		{
-		case 'q':
-			return 0;
-//not needed anymore (onExit, and watching for file changes)
-/*		case 'r':
-			//reload();
-			break;
-		case 'd':
-			FreeDll(nf, hHandle);*/
+			cout << "Waiting for NavyFIELD to start..." << endl;
+			while (!nf) { nf =  GetProcessHandle("NavyFIELD"); }
 		}
+		
+		dHandle = InjectDll(nf, "detoured.dll");
+		hHandle = InjectDll(nf, "hook.dll");
+		atexit(onExit);
+
+
+		printFile("ignore_users.txt", "Ignoring:");
+		printFile("ignore_phrases.txt", "---");
+
+
+	//this gives notifications when our files change.
+	//  we can then reload the ignore lists
+		thread t (bind(&WatchFiles<reload_t>, GetCWD(), &reload));
+		
+		WaitForSingleObject(nf, INFINITE);
 	}
 
 	
