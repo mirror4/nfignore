@@ -1,0 +1,7 @@
+wtb
+wts
+wtt
+^GO+(\s.*|$).*
+^go+(\s.*|$).*
+recruiting
+apply
