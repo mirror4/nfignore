@@ -31,8 +31,8 @@ bool matches(string text, T c)
 	{
 		try
 		{
-			boost::regex e(*i);
-			if (boost::regex_match(text, e))
+			boost::regex e(*i, boost::regex_constants::icase);
+			if (boost::regex_search(text, e))
 			{
 				return true;
 			}
